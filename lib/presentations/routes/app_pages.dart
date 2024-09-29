@@ -5,7 +5,7 @@ import 'package:dotoread_app/domain/bindings/root_binding.dart';
 import 'package:dotoread_app/domain/bindings/splash_binding.dart';
 import 'package:dotoread_app/presentations/root.dart';
 import 'package:dotoread_app/presentations/routes/app_routes.dart';
-import 'package:dotoread_app/presentations/screens/folder_details_page.dart';
+import 'package:dotoread_app/presentations/screens/folder_details_screen.dart';
 import 'package:dotoread_app/presentations/screens/signin_screen.dart';
 import 'package:dotoread_app/presentations/screens/signup_screen.dart';
 import 'package:dotoread_app/presentations/screens/splash_screen.dart';
@@ -30,7 +30,7 @@ class AppPages {
     ),
     GetPage(
         name: AppRoutes.BookmarkInFolder,
-        page: () => const FolderDetailsPage(),
+        page: () => const FolderDetailsScreen(),
         bindings: [
           FolderBinding(),
           BookmarkBinding(),

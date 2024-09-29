@@ -5,8 +5,8 @@ import 'package:dotoread_app/presentations/widgets/folder_sticky_header.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class FolderDetailsPage extends StatelessWidget {
-  const FolderDetailsPage({super.key});
+class FolderDetailsScreen extends StatelessWidget {
+  const FolderDetailsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

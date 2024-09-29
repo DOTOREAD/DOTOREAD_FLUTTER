@@ -24,9 +24,9 @@ class FolderContentList extends StatelessWidget {
                 title: Text(bookmark.title!),
                 subtitle: Text(bookmark.url!),
                 onTap: () {
+                  // _controller.updateVisit(bookmark);
                   Get.to(() => WebviewScreen(
                       title: bookmark.title!, url: bookmark.url!));
-                  //_controller.viewContent() => /book inappview로 구현 해야댐
                 },
               );
             },
