@@ -13,9 +13,13 @@ class BookmarksController extends GetxController {
   RxList<BookmarkModel> bookmarksListbyFolderId = <BookmarkModel>[].obs;
   RxList<BookmarkModel> bookmarksList = <BookmarkModel>[].obs;
 
-  // void getBookmarksByFolderId(int folderId) {
-  //   bookmarksListbyFolderId.value =
-  // }
+  void getBookmarksByFolderId(int folderId) {
+    // todo
+  }
+
+  Future<void> updateVisit(BookmarkModel bookmark) async {
+    // todo
+  }
 
   Future<void> getAllBookmarksCall() async {
     loader.value = true;

@@ -28,7 +28,7 @@ class AppTheme {
   static const TextStyle titleTextStyle = TextStyle(
     fontFamily: "Pretendard",
     fontSize: 24,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w600,
     color: white1,
   );
 
@@ -39,8 +39,9 @@ class AppTheme {
     color: white1,
   );
   static const TextStyle modalTitleStyle = TextStyle(
+    fontFamily: "Pretendard",
     fontSize: 18,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.w500,
   );
 
   static final InputDecoration urlInputDecoration = InputDecoration(
@@ -75,7 +76,7 @@ class AppTheme {
     titleTextStyle: titleTextStyle.copyWith(
       fontSize: 20,
       color: white1,
-    ), // Title text style
+    ),
     contentTextStyle: const TextStyle(
       fontSize: 16,
       color: white2,

@@ -39,8 +39,23 @@ class BookmarkRepositoryImpl extends BookmarkRepository {
 
   @override
   Future<ApiResult> updateBookmarks(
-      int id, Map<String, dynamic> updatedFields) {
-    // TODO: implement updateBookmarks
-    throw UnimplementedError();
+      int bookmarkId, Map<String, dynamic> updatedFields) async {
+    ApiResult apiResult;
+
+    try {
+      apiResult = await network.callApi(
+        method: NetworkModel.patch(
+          networkParameter: NetworkParameter(
+              url: '$baseUrl$bookmarkUrl/$bookmarkId',
+              requestBody: updatedFields,
+              header: {'Content-Type': 'application/json'}),
+        ),
+      );
+    } catch (exception) {
+      apiResult = const ApiResult.failure(
+        networkException: NetworkException.unknownException(),
+      );
+    }
+    return apiResult;
   }
 }
