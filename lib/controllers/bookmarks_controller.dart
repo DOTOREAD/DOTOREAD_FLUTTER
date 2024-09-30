@@ -17,8 +17,24 @@ class BookmarksController extends GetxController {
     // todo
   }
 
-  Future<void> updateVisit(BookmarkModel bookmark) async {
-    // todo
+  Future<void> updateVisit(int index) async {
+    Map<String, dynamic> updatedFields = {
+      'isVisited': true,
+    };
+    ApiResult result = await bookmarkRepository.updateBookmarks(
+        bookmarksList[index].id!, updatedFields);
+    result.when(
+      success: (data, url, headers, statusCode) {
+        bookmarksList[index] = bookmarksList[index].copyWith(isVisited: true);
+        print("Bookmark updated successfully: $statusCode, Data: $data");
+      },
+      error: (data, url, headers, statusCode) {
+        print("Error updating bookmark: $statusCode, Data: $data");
+      },
+      failure: (NetworkException) {
+        print("Failed to update bookmark: $NetworkException");
+      },
+    );
   }
 
   Future<void> getAllBookmarksCall() async {

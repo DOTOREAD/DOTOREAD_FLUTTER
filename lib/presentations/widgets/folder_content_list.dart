@@ -1,4 +1,5 @@
 import 'package:dotoread_app/controllers/bookmarks_controller.dart';
+import 'package:dotoread_app/core/constants/theme.dart';
 import 'package:dotoread_app/data/models/bookmark_model.dart';
 import 'package:dotoread_app/presentations/screens/webview_screen.dart';
 
@@ -21,10 +22,25 @@ class FolderContentList extends StatelessWidget {
             itemBuilder: (context, index) {
               final bookmark = _controller.bookmarksList[index];
               return ListTile(
+                leading: bookmark.isVisited!
+                    ? Container(
+                        width: 3,
+                        height: double.infinity,
+                        decoration: const BoxDecoration(
+                          color: AppTheme.gray1,
+                        ),
+                      )
+                    : Container(
+                        width: 3,
+                        height: double.infinity,
+                        decoration: const BoxDecoration(
+                          color: AppTheme.orange1,
+                        ),
+                      ),
                 title: Text(bookmark.title!),
                 subtitle: Text(bookmark.url!),
                 onTap: () {
-                  // _controller.updateVisit(bookmark);
+                  _controller.updateVisit(index);
                   Get.to(() => WebviewScreen(
                       title: bookmark.title!, url: bookmark.url!));
                 },
