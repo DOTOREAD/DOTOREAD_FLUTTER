@@ -1,5 +1,5 @@
 import 'package:dotoread_app/controllers/folder_controller.dart';
-import 'package:dotoread_app/data/models/folder_model.dart';
+import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
 import 'package:dotoread_app/domain/repositories/folder_repository.dart';
 import 'package:get/get.dart';

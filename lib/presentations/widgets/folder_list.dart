@@ -1,6 +1,6 @@
 import 'package:dotoread_app/controllers/folder_controller.dart';
 import 'package:dotoread_app/core/constants/theme.dart';
-import 'package:dotoread_app/data/models/folder_model.dart';
+import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
 import 'package:dotoread_app/presentations/routes/app_routes.dart';
 import 'package:dotoread_app/presentations/screens/folder_details_screen.dart';
 

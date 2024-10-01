@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dotoread_app/core/constants/theme.dart';
-import 'package:dotoread_app/data/models/bookmark_model.dart';
+import 'package:dotoread_app/data/models/bookmark_model/bookmark_model.dart';
 import 'package:dotoread_app/presentations/screens/webview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

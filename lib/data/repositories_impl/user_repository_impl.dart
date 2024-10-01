@@ -1,5 +1,5 @@
 import 'package:dotoread_app/core/constants/string_constant.dart';
-import 'package:dotoread_app/data/models/user_model.dart';
+import 'package:dotoread_app/data/models/user_model/user_model.dart';
 import 'package:dotoread_app/data/providers/network/contract.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
 import 'package:dotoread_app/data/providers/network/model/network_exception.dart';

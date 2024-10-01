@@ -23,6 +23,8 @@ class FolderAddWidget extends StatelessWidget {
                     Expanded(
                       child: TextField(
                         decoration: const InputDecoration(
+                          focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(color: AppTheme.gray3)),
                           hintText: 'Enter folder name',
                         ),
                         autofocus: true, // TextField 활성화 시 키보드 자동 열림
@@ -39,7 +41,7 @@ class FolderAddWidget extends StatelessWidget {
                             )
                           : const Icon(
                               Icons.close, // TextField가 비어있으면 뒤로가기 버튼
-                              color: AppTheme.white1,
+                              color: AppTheme.gray3,
                             ),
                       onPressed: _controller.isTextFieldNotEmpty.value
                           ? _controller.addFolder // 내용이 있으면 폴더 추가
@@ -57,7 +59,10 @@ class FolderAddWidget extends StatelessWidget {
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     IconButton(
-                      icon: const Icon(Icons.add),
+                      icon: const Icon(
+                        Icons.add,
+                        color: AppTheme.gray3,
+                      ),
                       onPressed: _controller.toggleAddMode, // 추가 버튼 눌렀을 때 전환
                     ),
                   ],

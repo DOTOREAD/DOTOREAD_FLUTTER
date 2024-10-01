@@ -1,4 +1,4 @@
-import 'package:dotoread_app/data/models/user_model.dart';
+import 'package:dotoread_app/data/models/user_model/user_model.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
 
 abstract class UserRepository {

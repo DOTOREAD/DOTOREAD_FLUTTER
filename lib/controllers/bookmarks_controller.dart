@@ -1,4 +1,4 @@
-import 'package:dotoread_app/data/models/bookmark_model.dart';
+import 'package:dotoread_app/data/models/bookmark_model/bookmark_model.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
 import 'package:dotoread_app/domain/repositories/bookmark_repository.dart';
 import 'package:dotoread_app/domain/repositories/folder_repository.dart';

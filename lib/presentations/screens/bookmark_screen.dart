@@ -21,10 +21,15 @@ class BookmarkScreen extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: TextField(
                     decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: AppTheme.white1),
+                      ),
                       hintText: 'Search...',
                       prefixIcon: const Icon(Icons.search),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
+                        borderSide: const BorderSide(color: AppTheme.gray3),
                       ),
                     ),
                   ),

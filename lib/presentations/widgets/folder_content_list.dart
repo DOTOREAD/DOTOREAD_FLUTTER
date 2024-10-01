@@ -1,6 +1,6 @@
 import 'package:dotoread_app/controllers/bookmarks_controller.dart';
 import 'package:dotoread_app/core/constants/theme.dart';
-import 'package:dotoread_app/data/models/bookmark_model.dart';
+import 'package:dotoread_app/data/models/bookmark_model/bookmark_model.dart';
 import 'package:dotoread_app/presentations/screens/webview_screen.dart';
 
 import 'package:flutter/material.dart';

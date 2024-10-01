@@ -1,5 +1,6 @@
 import 'package:dotoread_app/core/constants/string_constant.dart';
-import 'package:dotoread_app/data/models/user_model.dart';
+import 'package:dotoread_app/data/models/bookmark_model/bookmark_model.dart';
+import 'package:dotoread_app/data/models/user_model/user_model.dart';
 import 'package:dotoread_app/domain/repositories/bookmark_repository.dart';
 import 'package:dotoread_app/data/providers/network/contract.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
@@ -26,13 +27,13 @@ class BookmarkRepositoryImpl extends BookmarkRepository {
   }
 
   @override
-  Future<ApiResult> createBookmarks(UserModel userModel) {
+  Future<ApiResult> createBookmarks(BookmarkModel bookmarkModel) {
     // TODO: implement createBookmarks
     throw UnimplementedError();
   }
 
   @override
-  Future<ApiResult> deleteBookmarks(UserModel userModel) {
+  Future<ApiResult> deleteBookmarks(BookmarkModel bookmarkModel) {
     // TODO: implement deleteBookmarks
     throw UnimplementedError();
   }
