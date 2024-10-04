@@ -18,8 +18,12 @@ class FolderController extends GetxController {
       success: (data, url, headers, statusCode) {
         folderList.value = folderModelFromJson(data);
       },
-      error: (data, url, headers, statusCode) {},
-      failure: (NetworkException) {},
+      error: (data, url, headers, statusCode) {
+        print(data);
+      },
+      failure: (NetworkException) {
+        print(NetworkException);
+      },
     );
     loader.value = false;
   }
@@ -41,19 +45,15 @@ class FolderController extends GetxController {
   }
 
   Future<void> updateFolderCall(int index, String newFolderName) async {
-    // Prepare only the necessary fields for updating
     Map<String, dynamic> updatedFields = {
       'name': newFolderName,
-      'updatedAt': DateTime.now()
-          .toIso8601String(), // Automatically update the timestamp
+      'updatedAt': DateTime.now().toIso8601String(),
     };
 
-    // Call the repository to update the folder using PATCH
     ApiResult result = await folderRepository.updateFolder(
         folderList[index].id!, updatedFields);
     result.when(
       success: (data, url, headers, statusCode) {
-        // Update the folderList with the new folder name and timestamp
         folderList[index] = folderList[index]
             .copyWith(name: newFolderName, updatedAt: DateTime.now());
         print("Folder updated successfully: $statusCode, Data: $data");
