@@ -3,3 +3,4 @@ const String photoUrl = "/photos";
 const String bookmarkUrl = "/bookmark";
 const String folderUrl = "/folder";
 const String userUrl = "/user";
+const String loginUrl = "/login";
