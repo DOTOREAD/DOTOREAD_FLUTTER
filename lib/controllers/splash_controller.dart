@@ -12,13 +12,13 @@ class SplashController extends GetxController {
 
   Timer? _rootTimer;
 
-  // moveToRoot() {
-  //   if (_rootTimer == null || !_rootTimer!.isActive) {
-  //     _rootTimer = Timer(const Duration(seconds: 2), () {
-  //       Get.toNamed(AppRoutes.Root);
-  //     });
-  //   }
-  // }
+  moveToRoot() {
+    if (_rootTimer == null || !_rootTimer!.isActive) {
+      _rootTimer = Timer(const Duration(seconds: 2), () {
+        Get.toNamed(AppRoutes.Root);
+      });
+    }
+  }
 
   @override
   void onClose() {

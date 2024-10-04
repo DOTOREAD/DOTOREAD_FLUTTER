@@ -8,7 +8,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    controller.moveToSignInPage();
+    controller.moveToRoot();
     return Center(child: Image.asset("assets/logo/Logo.png"));
   }
 }

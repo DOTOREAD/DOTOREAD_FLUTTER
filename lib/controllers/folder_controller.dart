@@ -1,4 +1,5 @@
 import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
+import 'package:dotoread_app/data/models/res_model.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
 import 'package:dotoread_app/domain/repositories/folder_repository.dart';
 import 'package:dotoread_app/presentations/routes/app_routes.dart';
@@ -16,7 +17,8 @@ class FolderController extends GetxController {
     ApiResult result = await folderRepository.getFolder();
     result.when(
       success: (data, url, headers, statusCode) {
-        folderList.value = folderModelFromJson(data);
+        final ResModel<List<FolderModel>> resModel = folderModelFromJson(data);
+        folderList.value = resModel.result!;
       },
       error: (data, url, headers, statusCode) {
         print(data);

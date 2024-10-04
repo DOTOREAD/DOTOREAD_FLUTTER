@@ -1,12 +1,21 @@
 import 'dart:convert';
 
+import 'package:dotoread_app/data/models/res_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'folder_model.freezed.dart';
 part 'folder_model.g.dart';
 
-List<FolderModel> folderModelFromJson(String str) => List<FolderModel>.from(
-    json.decode(str).map((x) => FolderModel.fromJson(x)));
+List<FolderModel> folderModelListFromJson(List<dynamic> json) =>
+    json.map((x) => FolderModel.fromJson(x as Map<String, dynamic>)).toList();
+ResModel<List<FolderModel>> folderModelFromJson(String str) {
+  final Map<String, dynamic> parsedData = json.decode(str);
+  return ResModel<List<FolderModel>>.fromJson(
+    parsedData,
+    (json) => folderModelListFromJson(json as List<dynamic>),
+  );
+}
+
 String folderModelToJson(List<FolderModel> data) =>
     json.encode(List<dynamic>.from(data.map((e) => e.toJson())));
 String folderModelToSingleJson(FolderModel data) => json.encode(data.toJson());
