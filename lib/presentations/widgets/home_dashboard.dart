@@ -9,7 +9,7 @@ class HomeDashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.all(24.0),
+      padding: EdgeInsets.all(16.0),
       child: Column(
         children: [
           SizedBox(height: 30),

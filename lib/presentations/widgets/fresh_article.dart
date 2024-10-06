@@ -25,18 +25,6 @@ class FreshArticle extends StatelessWidget {
             height: 10,
           ),
           ArticleCarousel()
-          // Container(
-          //   height: 180,
-          //   decoration: ShapeDecoration(
-          //     shape: RoundedRectangleBorder(
-          //       side: const BorderSide(
-          //         width: 2,
-          //         color: AppTheme.orange1,
-          //       ),
-          //       borderRadius: BorderRadius.circular(13.59),
-          //     ),
-          //   ),
-          // ),
         ],
       ),
     );

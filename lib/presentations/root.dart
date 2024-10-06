@@ -7,18 +7,18 @@ import '../controllers/root_controller.dart';
 import '../core/constants/theme.dart';
 
 import 'screens/home_screen.dart';
-import 'screens/mission_screen.dart';
+import 'screens/dotori_screen.dart';
 import 'screens/setting_screen.dart';
 
 class Root extends StatelessWidget {
   final RootController _controller = Get.find<RootController>();
   final TextEditingController _urlController = TextEditingController();
 
-  final List<Widget> pages = const [
-    HomeScreen(),
-    BookmarkScreen(),
-    MissionScreen(),
-    SettingScreen(),
+  final List<Widget> pages = [
+    const HomeScreen(),
+    const BookmarkScreen(),
+    const DotoriScreen(),
+    const SettingScreen(),
   ];
 
   final List<IconData> iconList = [

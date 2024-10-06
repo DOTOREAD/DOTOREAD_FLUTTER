@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
 import 'package:dotoread_app/data/models/res_model.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
@@ -18,13 +20,16 @@ class FolderController extends GetxController {
     result.when(
       success: (data, url, headers, statusCode) {
         final ResModel<List<FolderModel>> resModel = folderModelFromJson(data);
-        folderList.value = resModel.result!;
+        folderList.value = resModel.result ?? <FolderModel>[];
+        log(url);
+        log('$headers');
+        log('$statusCode');
       },
       error: (data, url, headers, statusCode) {
-        print(data);
+        log(data);
       },
       failure: (NetworkException) {
-        print(NetworkException);
+        log('$NetworkException');
       },
     );
     loader.value = false;
