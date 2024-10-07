@@ -1,3 +1,4 @@
+import 'package:dotoread_app/core/constants/theme.dart';
 import 'package:flutter/material.dart';
 
 class DotoriCountSection extends StatelessWidget {
@@ -13,12 +14,12 @@ class DotoriCountSection extends StatelessWidget {
             children: [
               Text(
                 "후원한 도토리",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: AppTheme.modalTitleStyle,
               ),
               SizedBox(height: 8),
               Text(
-                "50",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                "50", // controller.getAcornDonateCount
+                style: AppTheme.buttonTextStyle,
               ),
             ],
           ),
@@ -30,12 +31,12 @@ class DotoriCountSection extends StatelessWidget {
             children: [
               Text(
                 "남아있는 도토리",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: AppTheme.modalTitleStyle,
               ),
               SizedBox(height: 8),
               Text(
-                "100",
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                "100", // controller.user.getAcornCount();
+                style: AppTheme.buttonTextStyle,
               ),
             ],
           ),
