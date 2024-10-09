@@ -18,7 +18,7 @@ class Root extends StatelessWidget {
 
   final List<Widget> pages = [
     const HomeScreen(),
-    const BookmarkScreen(),
+    BookmarkScreen(),
     const ShareScreen(),
     const DotoriScreen(),
     const SettingScreen(),
@@ -44,23 +44,8 @@ class Root extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool keyboardIsOpened = MediaQuery.of(context).viewInsets.bottom != 0.0;
     return Scaffold(
       body: Obx(() => pages[_controller.bottomNavIndex.value]),
-      floatingActionButton: keyboardIsOpened
-          ? null
-          : FloatingActionButton(
-              shape: ShapeBorder.lerp(
-                  RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0)),
-                  const CircleBorder(),
-                  0.5),
-              backgroundColor: AppTheme.orange1,
-              onPressed: () {
-                _showUrlModal();
-              },
-              child: const Icon(Icons.add),
-            ),
       bottomNavigationBar: Obx(
         () => Container(
           margin: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
@@ -102,49 +87,6 @@ class Root extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  void _showUrlModal() {
-    Get.bottomSheet(
-      Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('Enter URL', style: AppTheme.modalTitleStyle),
-              const SizedBox(height: 20),
-              TextField(
-                controller: _urlController,
-                decoration: AppTheme.urlInputDecoration,
-                keyboardType: TextInputType.url,
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                style: AppTheme.textButtonPrimaryTheme,
-                onPressed: () {
-                  final enteredUrl = _urlController.text;
-                  if (enteredUrl.isNotEmpty) {
-                    Get.back();
-                    _urlController.clear();
-                  }
-                },
-                child: const Text(
-                  'Save URL',
-                  style: AppTheme.buttonTextStyle,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      isScrollControlled: true,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-      ),
-      backgroundColor: AppTheme.backgroundBox,
     );
   }
 }

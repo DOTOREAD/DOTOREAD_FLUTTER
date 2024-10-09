@@ -41,15 +41,17 @@ class _DonationScreenState extends State<DonationScreen> {
               const SizedBox(height: 16),
               Text(
                 widget.store.name!,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: AppTheme.titleTextStyle,
               ),
               const SizedBox(height: 8),
-              Text(widget.store.content!),
+              Text(
+                widget.store.content!,
+                style: AppTheme.contentTextStyle,
+              ),
               const SizedBox(height: 16),
               Row(
                 children: [
-                  const Text('후원할 도토리 개수: ', style: TextStyle(fontSize: 18)),
+                  const Text('후원할 도토리 개수: ', style: AppTheme.modalTitleStyle),
                   IconButton(
                     onPressed: () {
                       setState(() {
@@ -58,7 +60,7 @@ class _DonationScreenState extends State<DonationScreen> {
                     },
                     icon: const Icon(Icons.remove),
                   ),
-                  Text('$dotoCount', style: const TextStyle(fontSize: 18)),
+                  Text('$dotoCount', style: AppTheme.modalTitleStyle),
                   IconButton(
                     onPressed: () {
                       setState(() {
