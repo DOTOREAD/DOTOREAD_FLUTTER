@@ -35,8 +35,7 @@ class HttpNetworkImplementation implements HttpNetwork {
           http.Response response = await http.delete(
             Uri.parse(networkParameter.url),
             headers: {...?networkParameter.header},
-            body: jsonEncode(
-                networkParameter.requestBody), // Optional body for delete
+            body: jsonEncode(networkParameter.requestBody),
           );
           return response;
         },

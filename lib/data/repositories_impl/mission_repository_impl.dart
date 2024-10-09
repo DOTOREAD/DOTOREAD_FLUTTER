@@ -1,4 +1,4 @@
-import 'package:dotoread_app/data/models/Mission_model.dart';
+import 'package:dotoread_app/data/models/mission_model/mission_model.dart';
 import 'package:dotoread_app/data/providers/network/contract.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
 import 'package:dotoread_app/domain/repositories/mission_repository.dart';

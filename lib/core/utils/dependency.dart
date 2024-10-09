@@ -1,7 +1,9 @@
+import 'package:dotoread_app/data/repositories_impl/auth_repository_impl.dart';
 import 'package:dotoread_app/data/repositories_impl/bookmark_repository_impl.dart';
 import 'package:dotoread_app/data/repositories_impl/folder_repository_impl.dart';
 import 'package:dotoread_app/data/repositories_impl/mission_repository_impl.dart';
 import 'package:dotoread_app/data/repositories_impl/user_repository_impl.dart';
+import 'package:dotoread_app/domain/repositories/auth_repository.dart';
 import 'package:dotoread_app/domain/repositories/bookmark_repository.dart';
 import 'package:dotoread_app/domain/repositories/folder_repository.dart';
 
@@ -30,6 +32,9 @@ class Dependency {
     ); // permanent : true ? smartManagement.keepFactory ?
     Get.lazyPut<MissionRepository>(
       () => MissionRepositoryImpl(Get.find<Network>()),
+    );
+    Get.lazyPut<AuthRepository>(
+      () => AuthRepositoryImpl(Get.find<Network>()),
     );
   }
 }

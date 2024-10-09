@@ -1,7 +1,7 @@
 class AppRoutes {
   static const Splash = "/";
   static const Signup = "/signup";
-  static const Signin = "/signin";
+  static const Login = "/login";
   static const Root = "/root";
   static const Folder = "/folder/:id";
   static const BookmarkInFolder = "/bookmark";

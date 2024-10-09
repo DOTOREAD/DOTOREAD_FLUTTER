@@ -31,6 +31,18 @@ class AppTheme {
     fontWeight: FontWeight.w600,
     color: white1,
   );
+  static const TextStyle contentTextStyle = TextStyle(
+    fontFamily: "Pretendard",
+    fontSize: 16,
+    fontWeight: FontWeight.w300,
+    color: white2,
+  );
+  static const TextStyle folderTextStyle = TextStyle(
+    fontFamily: "Pretendard",
+    fontSize: 18,
+    fontWeight: FontWeight.w400,
+    color: white2,
+  );
 
   static const TextStyle buttonTextStyle = TextStyle(
     fontFamily: "Pretendard",

@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
+import 'package:dotoread_app/data/models/res_model.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
 import 'package:dotoread_app/domain/repositories/folder_repository.dart';
 import 'package:dotoread_app/presentations/routes/app_routes.dart';
@@ -16,10 +19,18 @@ class FolderController extends GetxController {
     ApiResult result = await folderRepository.getFolder();
     result.when(
       success: (data, url, headers, statusCode) {
-        folderList.value = folderModelFromJson(data);
+        final ResModel<List<FolderModel>> resModel = folderModelFromJson(data);
+        folderList.value = resModel.result ?? <FolderModel>[];
+        log(url);
+        log('$headers');
+        log('$statusCode');
       },
-      error: (data, url, headers, statusCode) {},
-      failure: (NetworkException) {},
+      error: (data, url, headers, statusCode) {
+        log(data);
+      },
+      failure: (NetworkException) {
+        log('$NetworkException');
+      },
     );
     loader.value = false;
   }
@@ -41,19 +52,15 @@ class FolderController extends GetxController {
   }
 
   Future<void> updateFolderCall(int index, String newFolderName) async {
-    // Prepare only the necessary fields for updating
     Map<String, dynamic> updatedFields = {
       'name': newFolderName,
-      'updatedAt': DateTime.now()
-          .toIso8601String(), // Automatically update the timestamp
+      'updatedAt': DateTime.now().toIso8601String(),
     };
 
-    // Call the repository to update the folder using PATCH
     ApiResult result = await folderRepository.updateFolder(
         folderList[index].id!, updatedFields);
     result.when(
       success: (data, url, headers, statusCode) {
-        // Update the folderList with the new folder name and timestamp
         folderList[index] = folderList[index]
             .copyWith(name: newFolderName, updatedAt: DateTime.now());
         print("Folder updated successfully: $statusCode, Data: $data");
