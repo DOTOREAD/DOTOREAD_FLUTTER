@@ -2,8 +2,8 @@ import 'package:dotoread_app/core/constants/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class UrlAddWidget extends StatelessWidget {
-  const UrlAddWidget({
+class UrlAddModal extends StatelessWidget {
+  const UrlAddModal({
     super.key,
     required TextEditingController urlController,
   }) : _urlController = urlController;
