@@ -56,13 +56,28 @@ class AppTheme {
     fontWeight: FontWeight.w500,
   );
 
-  static final InputDecoration urlInputDecoration = InputDecoration(
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(10),
+  static const InputDecoration urlInputDecoration = InputDecoration(
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AppTheme.orange1, width: 2.0),
     ),
-    labelText: 'URL',
-    hintText: 'Enter a URL to save',
-    prefixIcon: const Icon(Icons.link),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AppTheme.orange1, width: 1.5),
+    ),
+    contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+    hintText: 'Enter URL',
+    prefixIcon: Icon(Icons.link, color: AppTheme.gray3),
+  );
+
+  static const InputDecoration searchInputDecoration = InputDecoration(
+    hintText: 'Search',
+    suffixIcon: Icon(Icons.search, color: AppTheme.gray3),
+    contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
+    focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AppTheme.orange1, width: 2.0),
+    ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: AppTheme.orange1, width: 1.5),
+    ),
   );
 
   static final ButtonStyle textButtonSecondaryTheme = TextButton.styleFrom(

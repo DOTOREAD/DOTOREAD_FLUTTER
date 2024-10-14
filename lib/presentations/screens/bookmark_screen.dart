@@ -21,20 +21,7 @@ class BookmarkScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search',
-                        suffixIcon: Icon(Icons.search, color: AppTheme.gray3),
-                        contentPadding: EdgeInsets.symmetric(
-                            vertical: 10.0, horizontal: 10),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: AppTheme.orange1, width: 2.0),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide:
-                              BorderSide(color: AppTheme.orange1, width: 1.5),
-                        ),
-                      ),
+                      decoration: AppTheme.searchInputDecoration,
                     ),
                   ),
                   SizedBox(width: 10),
