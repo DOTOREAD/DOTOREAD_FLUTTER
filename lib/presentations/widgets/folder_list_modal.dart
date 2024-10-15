@@ -30,8 +30,7 @@ class FolderListModal extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 12, vertical: 12),
-                      backgroundColor:
-                          isSelected ? AppTheme.orange3 : AppTheme.articleBox,
+                      backgroundColor: AppTheme.articleBox,
                       shape: RoundedRectangleBorder(
                         side: isSelected
                             ? const BorderSide(

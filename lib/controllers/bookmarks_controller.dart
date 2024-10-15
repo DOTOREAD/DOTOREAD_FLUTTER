@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dotoread_app/data/models/bookmark_model/bookmark_model.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
 import 'package:dotoread_app/domain/repositories/bookmark_repository.dart';
@@ -35,6 +37,19 @@ class BookmarksController extends GetxController {
         print("Failed to update bookmark: $NetworkException");
       },
     );
+  }
+
+  Future<void> postBookmarks(int id, String url) async {
+    if (url != '') {
+      BookmarkModel newBookmark = BookmarkModel(url: url);
+      ApiResult result = await bookmarkRepository.createBookmarks(newBookmark);
+      result.when(
+          success: (data, url, headers, statusCode) async {
+            log(data);
+          },
+          error: (data, url, headers, statusCode) {},
+          failure: (NetworkException) {});
+    }
   }
 
   Future<void> getAllBookmarksCall() async {
