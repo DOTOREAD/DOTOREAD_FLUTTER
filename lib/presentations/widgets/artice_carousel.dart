@@ -33,6 +33,7 @@ class ArticleCarousel extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
+        viewportFraction: 1.0,
         autoPlay: true,
         enlargeCenterPage: true,
       ),

@@ -27,7 +27,10 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
             HomeDashboard(),
-            // FreshArticle(),
+            SizedBox(
+              height: 30,
+            ),
+            FreshArticle(),
           ],
         ),
       ),
