@@ -1,10 +1,10 @@
-import 'dart:developer';
-
+import 'package:dotoread_app/controllers/auth_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import 'package:get/get.dart';
 
 class ShareScreen extends StatelessWidget {
-  const ShareScreen({super.key});
+  ShareScreen({super.key});
+  AuthController controller = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +12,7 @@ class ShareScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            await _googleLogin(context);
+            await controller.webviewLogin();
           },
           child: const Text(
             'Google 로그인하기',
@@ -20,29 +20,5 @@ class ShareScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  Future<void> _googleLogin(BuildContext context) async {
-    try {
-      final GoogleSignIn googleSignIn = GoogleSignIn(
-        scopes: ['email', 'profile', 'openid'],
-      );
-
-      final GoogleSignInAccount? account = await googleSignIn.signIn();
-
-      if (account != null) {
-        log('Display Name: ${account.displayName}');
-        log('Email: ${account.email}');
-        log('ID: ${account.id}');
-
-        final GoogleSignInAuthentication auth = await account.authentication;
-
-        log('Access Token: ${auth.accessToken}');
-        log('ID Token: ${auth.idToken}');
-        log('Server Auth Code: ${auth.serverAuthCode}');
-      }
-    } catch (error) {
-      log('$error');
-    }
   }
 }

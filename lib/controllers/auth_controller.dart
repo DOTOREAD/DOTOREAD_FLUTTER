@@ -4,8 +4,9 @@ import 'dart:developer';
 import 'package:dotoread_app/data/models/auth_model/auth_model.dart';
 import 'package:dotoread_app/data/models/res_model.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
-import 'package:dotoread_app/data/repositories_impl/auth_repository_impl.dart';
 import 'package:dotoread_app/domain/repositories/auth_repository.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 
@@ -19,6 +20,57 @@ class AuthController extends GetxController {
 
   static const String accessTokenKey = 'accessToken';
   static const String refreshTokenKey = 'refreshToken';
+
+  Future<void> webviewLogin() async {
+    loader.value = true;
+    try {
+      Get.to(() => Scaffold(
+            appBar: AppBar(
+              title: const Text('Login'),
+            ),
+            body: InAppWebView(
+              initialUrlRequest: URLRequest(
+                url: WebUri(
+                    'https://api.dotoread.shop/oauth2/authorization/google'),
+              ),
+              initialSettings: InAppWebViewSettings(userAgent: 'random'),
+              onLoadStop: (controller, url) async {
+                log('Page loaded: $url');
+
+                final content = await controller.evaluateJavascript(
+                    source: "document.body.textContent");
+
+                if (content != null) {
+                  try {
+                    final response = json.decode(content);
+                    log('Login response: $response');
+
+                    if (response['isSuccess'] == true) {
+                      final accessToken = response['result']['accessToken'];
+                      final refreshToken = response['result']['refreshToken'];
+
+                      await _secureStorage.write(
+                          key: accessTokenKey, value: accessToken);
+                      await _secureStorage.write(
+                          key: refreshTokenKey, value: refreshToken);
+
+                      log('acccess: $accessToken refresh: $refreshToken');
+
+                      Get.back();
+                      Get.snackbar('Success', '로그인이 완료되었습니다.');
+                    }
+                  } catch (e) {
+                    log('JSON parsing error: $e');
+                  }
+                }
+              },
+            ),
+          ));
+    } catch (exception) {
+      log("Exception occurred: $exception");
+    }
+    loader.value = false;
+  }
 
   Future<void> login() async {
     loader.value = true;
@@ -44,21 +96,20 @@ class AuthController extends GetxController {
             // _secureStorage.write(
             //     key: refreshTokenKey, value: authData.refreshToken);
 
-            print("Login success: Access Token and Refresh Token saved.");
+            log("ㄹ고인 성공");
           } else {
-            print(
-                "Login failed. Code: ${resModel.code}, Message: ${resModel.message}");
+            log("Login failed. Code: ${resModel.code}, Message: ${resModel.message}");
           }
         },
         error: (data, url, headers, statusCode) {
-          print("error: $statusCode");
+          log("error: $statusCode");
         },
         failure: (networkException) {
-          print("Network failure: $networkException");
+          log("Network failure: $networkException");
         },
       );
     } catch (exception) {
-      print("Exception occurred: $exception");
+      log("Exception : $exception");
     }
     loader.value = false;
   }

@@ -1,4 +1,5 @@
 import 'package:dotoread_app/core/constants/theme.dart';
+import 'package:dotoread_app/firebase_options.dart';
 import 'package:dotoread_app/presentations/root.dart';
 import 'package:dotoread_app/presentations/routes/app_pages.dart';
 import 'package:dotoread_app/presentations/routes/app_routes.dart';
@@ -6,9 +7,12 @@ import 'package:dotoread_app/core/utils/dependency.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Dependency.init();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

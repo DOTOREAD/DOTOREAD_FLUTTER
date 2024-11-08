@@ -18,8 +18,8 @@ class Root extends StatelessWidget {
 
   final List<Widget> pages = [
     const HomeScreen(),
-    BookmarkScreen(),
-    const ShareScreen(),
+    const BookmarkScreen(),
+    ShareScreen(),
     const DotoriScreen(),
     const SettingScreen(),
   ];
