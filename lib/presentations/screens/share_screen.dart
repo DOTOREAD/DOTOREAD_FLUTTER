@@ -12,7 +12,7 @@ class ShareScreen extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () async {
-            await controller.webviewLogin();
+            await controller.signInWithGoogle();
           },
           child: const Text(
             'Google 로그인하기',

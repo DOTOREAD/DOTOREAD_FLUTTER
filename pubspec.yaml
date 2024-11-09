@@ -51,6 +51,7 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   dots_indicator: ^3.0.0
   google_sign_in:
+  supabase_flutter: ^2.8.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,18 +1,19 @@
 import 'package:dotoread_app/core/constants/theme.dart';
-import 'package:dotoread_app/firebase_options.dart';
 import 'package:dotoread_app/presentations/root.dart';
 import 'package:dotoread_app/presentations/routes/app_pages.dart';
 import 'package:dotoread_app/presentations/routes/app_routes.dart';
 import 'package:dotoread_app/core/utils/dependency.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() async {
+  await Supabase.initialize(
+      url: 'https://wzlonexwankroajfeyuw.supabase.co',
+      anonKey:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind6bG9uZXh3YW5rcm9hamZleXV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzExNTI3OTcsImV4cCI6MjA0NjcyODc5N30.qoWk7b6G_1bLu2bOxN0UXcTA889X3lubi0tsBfNO14c');
   WidgetsFlutterBinding.ensureInitialized();
   Dependency.init();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   runApp(const MyApp());
 }
 
