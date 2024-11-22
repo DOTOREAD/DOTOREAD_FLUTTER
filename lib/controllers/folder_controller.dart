@@ -20,29 +20,11 @@ class FolderController extends GetxController {
     ApiResult result = await folderRepository.getFolder();
     result.when(
       success: (data, url, headers, statusCode) {
-        log('=== Folder API Success ===');
-        log('URL: $url');
-        log('Status Code: $statusCode');
-        log('Headers: $headers');
-
-        final decodedData = utf8.decode(data.codeUnits);
-        log('Response Data: $decodedData');
-
-        final ResModel<List<FolderModel>> resModel =
-            folderModelFromJson(decodedData);
+        final ResModel<List<FolderModel>> resModel = folderModelFromJson(data);
         folderList.value = resModel.result ?? <FolderModel>[];
-
-        log('Parsed Folder List: ${folderList.value}');
       },
-      error: (data, url, headers, statusCode) {
-        log('=== Folder API Error ===');
-        log('URL: $url');
-        log('Status Code: $statusCode');
-        log('Headers: $headers');
-        log('Error Data: $data');
-      },
+      error: (data, url, headers, statusCode) {},
       failure: (NetworkException) {
-        log('=== Folder API Failure ===');
         log('Network Exception: $NetworkException');
       },
     );
