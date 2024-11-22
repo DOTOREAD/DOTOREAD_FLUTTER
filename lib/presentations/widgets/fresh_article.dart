@@ -8,18 +8,13 @@ class FreshArticle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(16),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
             'FRESH ARTICLE',
-            style: TextStyle(
-              color: AppTheme.orange1,
-              fontSize: 30,
-              fontFamily: 'Pretendard',
-              fontWeight: FontWeight.w600,
-              height: 0,
-            ),
+            style: AppTheme.titleTextStyle,
           ),
           const SizedBox(
             height: 10,

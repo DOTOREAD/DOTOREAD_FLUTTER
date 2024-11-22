@@ -4,10 +4,11 @@ import 'dart:developer';
 import 'package:dotoread_app/data/models/auth_model/auth_model.dart';
 import 'package:dotoread_app/data/models/res_model.dart';
 import 'package:dotoread_app/data/providers/network/model/api_results.dart';
-import 'package:dotoread_app/data/repositories_impl/auth_repository_impl.dart';
 import 'package:dotoread_app/domain/repositories/auth_repository.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthController extends GetxController {
   final AuthRepository authRepository;
@@ -44,22 +45,73 @@ class AuthController extends GetxController {
             // _secureStorage.write(
             //     key: refreshTokenKey, value: authData.refreshToken);
 
-            print("Login success: Access Token and Refresh Token saved.");
+            log("ㄹ고인 성공");
           } else {
-            print(
-                "Login failed. Code: ${resModel.code}, Message: ${resModel.message}");
+            log("Login failed. Code: ${resModel.code}, Message: ${resModel.message}");
           }
         },
         error: (data, url, headers, statusCode) {
-          print("error: $statusCode");
+          log("error: $statusCode");
         },
         failure: (networkException) {
-          print("Network failure: $networkException");
+          log("Network failure: $networkException");
         },
       );
     } catch (exception) {
-      print("Exception occurred: $exception");
+      log("Exception : $exception");
     }
     loader.value = false;
+  }
+
+  Future<void> signInWithGoogle() async {
+    loader.value = true;
+    try {
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+
+      // await googleSignIn.signOut();
+
+      final googleUser = await googleSignIn.signIn();
+      if (googleUser == null) throw 'googleUser == null';
+
+      final googleAuth = await googleUser.authentication;
+      final accessToken = googleAuth.accessToken;
+      final idToken = googleAuth.idToken;
+
+      if (accessToken == null) throw 'accessToken == null';
+      if (idToken == null) throw 'idToken == null';
+
+      final response = await Supabase.instance.client.auth.signInWithIdToken(
+        provider: OAuthProvider.google,
+        idToken: idToken,
+        accessToken: accessToken,
+      );
+
+      if (response.session != null) {
+        final accessToken = response.session!.accessToken;
+        final refreshToken = response.session!.refreshToken;
+
+        log("Access Token: $accessToken");
+        log("Refresh Token: $refreshToken");
+
+        await _secureStorage.write(
+          key: accessTokenKey,
+          value: accessToken,
+        );
+        await _secureStorage.write(
+          key: refreshTokenKey,
+          value: refreshToken,
+        );
+
+        log("로그인 성공");
+      }
+    } catch (error) {
+      log("로그인 실패 $error");
+      // if (error is! String) {
+      //  await GoogleSignIn().signOut();
+      // }
+      rethrow;
+    } finally {
+      loader.value = false;
+    }
   }
 }

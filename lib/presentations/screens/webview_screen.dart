@@ -14,6 +14,7 @@ class WebviewScreen extends StatelessWidget {
         title: Text(title),
       ),
       body: InAppWebView(
+        initialSettings: InAppWebViewSettings(userAgent: 'random'),
         initialUrlRequest: URLRequest(
           url: WebUri(url),
         ),
