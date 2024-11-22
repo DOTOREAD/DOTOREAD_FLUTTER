@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:convert';
 
 import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
 import 'package:dotoread_app/data/models/res_model.dart';
@@ -19,17 +20,30 @@ class FolderController extends GetxController {
     ApiResult result = await folderRepository.getFolder();
     result.when(
       success: (data, url, headers, statusCode) {
-        final ResModel<List<FolderModel>> resModel = folderModelFromJson(data);
+        log('=== Folder API Success ===');
+        log('URL: $url');
+        log('Status Code: $statusCode');
+        log('Headers: $headers');
+
+        final decodedData = utf8.decode(data.codeUnits);
+        log('Response Data: $decodedData');
+
+        final ResModel<List<FolderModel>> resModel =
+            folderModelFromJson(decodedData);
         folderList.value = resModel.result ?? <FolderModel>[];
-        log(url);
-        log('$headers');
-        log('$statusCode');
+
+        log('Parsed Folder List: ${folderList.value}');
       },
       error: (data, url, headers, statusCode) {
-        log(data);
+        log('=== Folder API Error ===');
+        log('URL: $url');
+        log('Status Code: $statusCode');
+        log('Headers: $headers');
+        log('Error Data: $data');
       },
       failure: (NetworkException) {
-        log('$NetworkException');
+        log('=== Folder API Failure ===');
+        log('Network Exception: $NetworkException');
       },
     );
     loader.value = false;

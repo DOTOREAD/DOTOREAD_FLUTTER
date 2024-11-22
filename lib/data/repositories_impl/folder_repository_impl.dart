@@ -25,7 +25,10 @@ class FolderRepositoryImpl extends FolderRepository {
           networkParameter: NetworkParameter(
               url: baseUrl + folderUrl,
               requestBody: body,
-              header: {'Content-Type': 'application/json'}),
+              header: {
+                'Content-Type': 'application/json',
+                'access': ACCESSTOKEN
+              }),
         ),
       );
     } catch (exception) {
@@ -46,6 +49,7 @@ class FolderRepositoryImpl extends FolderRepository {
         method: NetworkModel.delete(
           networkParameter: NetworkParameter(
             url: '$baseUrl$folderUrl/${folderModel.id}',
+            header: {'access': ACCESSTOKEN},
           ),
         ),
       );
@@ -64,7 +68,8 @@ class FolderRepositoryImpl extends FolderRepository {
     try {
       apiResult = await network.callApi(
           method: const NetworkModel.get(
-              networkParameter: NetworkParameter(url: baseUrl + folderUrl)));
+              networkParameter: NetworkParameter(
+                  url: baseUrl + folderUrl, header: {'access': ACCESSTOKEN})));
     } catch (exception) {
       apiResult = const ApiResult.failure(
           networkException: NetworkException.unknownException());
