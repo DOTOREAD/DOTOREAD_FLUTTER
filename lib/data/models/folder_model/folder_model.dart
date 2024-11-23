@@ -25,8 +25,6 @@ class FolderModel with _$FolderModel {
   const factory FolderModel({
     int? id,
     String? name,
-    DateTime? createdAt,
-    DateTime? updatedAt,
   }) = _FolderModel;
   factory FolderModel.fromJson(Map<String, dynamic> json) =>
       _$FolderModelFromJson(json);

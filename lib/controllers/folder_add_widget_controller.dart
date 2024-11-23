@@ -23,8 +23,6 @@ class FolderAddWidgetController extends GetxController {
       // 여기에 실제 폴더 추가 로직을 작성 (API 호출 등)
       FolderModel newFolder = FolderModel(
         name: folderName.value, // 텍스트 필드에서 입력받은 이름 사용
-        createdAt: DateTime.now(), // 현재 시간
-        updatedAt: DateTime.now(),
       );
 
       ApiResult result = await folderRepository.createFolder(newFolder);

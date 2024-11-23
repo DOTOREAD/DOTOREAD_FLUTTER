@@ -20,16 +20,12 @@ BookmarkModel _$BookmarkModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BookmarkModel {
-  int? get id => throw _privateConstructorUsedError;
-  int? get userId => throw _privateConstructorUsedError;
-  int? get folderId => throw _privateConstructorUsedError;
-  String? get url => throw _privateConstructorUsedError;
-  String? get imageUrl => throw _privateConstructorUsedError;
+  int? get bookmarkId => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
-  bool? get isVisited => throw _privateConstructorUsedError;
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
-  String? get rating => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
+  String? get img => throw _privateConstructorUsedError;
+  String? get createdAt => throw _privateConstructorUsedError;
+  FolderModel? get folder => throw _privateConstructorUsedError;
 
   /// Serializes this BookmarkModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -48,16 +44,14 @@ abstract class $BookmarkModelCopyWith<$Res> {
       _$BookmarkModelCopyWithImpl<$Res, BookmarkModel>;
   @useResult
   $Res call(
-      {int? id,
-      int? userId,
-      int? folderId,
-      String? url,
-      String? imageUrl,
+      {int? bookmarkId,
       String? title,
-      bool? isVisited,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      String? rating});
+      String? url,
+      String? img,
+      String? createdAt,
+      FolderModel? folder});
+
+  $FolderModelCopyWith<$Res>? get folder;
 }
 
 /// @nodoc
@@ -75,59 +69,53 @@ class _$BookmarkModelCopyWithImpl<$Res, $Val extends BookmarkModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? userId = freezed,
-    Object? folderId = freezed,
-    Object? url = freezed,
-    Object? imageUrl = freezed,
+    Object? bookmarkId = freezed,
     Object? title = freezed,
-    Object? isVisited = freezed,
+    Object? url = freezed,
+    Object? img = freezed,
     Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? rating = freezed,
+    Object? folder = freezed,
   }) {
     return _then(_value.copyWith(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      bookmarkId: freezed == bookmarkId
+          ? _value.bookmarkId
+          : bookmarkId // ignore: cast_nullable_to_non_nullable
               as int?,
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      folderId: freezed == folderId
-          ? _value.folderId
-          : folderId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      isVisited: freezed == isVisited
-          ? _value.isVisited
-          : isVisited // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      img: freezed == img
+          ? _value.img
+          : img // ignore: cast_nullable_to_non_nullable
+              as String?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      rating: freezed == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
               as String?,
+      folder: freezed == folder
+          ? _value.folder
+          : folder // ignore: cast_nullable_to_non_nullable
+              as FolderModel?,
     ) as $Val);
+  }
+
+  /// Create a copy of BookmarkModel
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $FolderModelCopyWith<$Res>? get folder {
+    if (_value.folder == null) {
+      return null;
+    }
+
+    return $FolderModelCopyWith<$Res>(_value.folder!, (value) {
+      return _then(_value.copyWith(folder: value) as $Val);
+    });
   }
 }
 
@@ -140,16 +128,15 @@ abstract class _$$BookmarkModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int? id,
-      int? userId,
-      int? folderId,
-      String? url,
-      String? imageUrl,
+      {int? bookmarkId,
       String? title,
-      bool? isVisited,
-      DateTime? createdAt,
-      DateTime? updatedAt,
-      String? rating});
+      String? url,
+      String? img,
+      String? createdAt,
+      FolderModel? folder});
+
+  @override
+  $FolderModelCopyWith<$Res>? get folder;
 }
 
 /// @nodoc
@@ -165,58 +152,38 @@ class __$$BookmarkModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = freezed,
-    Object? userId = freezed,
-    Object? folderId = freezed,
-    Object? url = freezed,
-    Object? imageUrl = freezed,
+    Object? bookmarkId = freezed,
     Object? title = freezed,
-    Object? isVisited = freezed,
+    Object? url = freezed,
+    Object? img = freezed,
     Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? rating = freezed,
+    Object? folder = freezed,
   }) {
     return _then(_$BookmarkModelImpl(
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      bookmarkId: freezed == bookmarkId
+          ? _value.bookmarkId
+          : bookmarkId // ignore: cast_nullable_to_non_nullable
               as int?,
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      folderId: freezed == folderId
-          ? _value.folderId
-          : folderId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      url: freezed == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String?,
-      imageUrl: freezed == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String?,
-      isVisited: freezed == isVisited
-          ? _value.isVisited
-          : isVisited // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      url: freezed == url
+          ? _value.url
+          : url // ignore: cast_nullable_to_non_nullable
+              as String?,
+      img: freezed == img
+          ? _value.img
+          : img // ignore: cast_nullable_to_non_nullable
+              as String?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      rating: freezed == rating
-          ? _value.rating
-          : rating // ignore: cast_nullable_to_non_nullable
               as String?,
+      folder: freezed == folder
+          ? _value.folder
+          : folder // ignore: cast_nullable_to_non_nullable
+              as FolderModel?,
     ));
   }
 }
@@ -225,44 +192,32 @@ class __$$BookmarkModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BookmarkModelImpl implements _BookmarkModel {
   const _$BookmarkModelImpl(
-      {this.id,
-      this.userId,
-      this.folderId,
-      this.url,
-      this.imageUrl,
+      {this.bookmarkId,
       this.title,
-      this.isVisited,
+      this.url,
+      this.img,
       this.createdAt,
-      this.updatedAt,
-      this.rating});
+      this.folder});
 
   factory _$BookmarkModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$BookmarkModelImplFromJson(json);
 
   @override
-  final int? id;
-  @override
-  final int? userId;
-  @override
-  final int? folderId;
-  @override
-  final String? url;
-  @override
-  final String? imageUrl;
+  final int? bookmarkId;
   @override
   final String? title;
   @override
-  final bool? isVisited;
+  final String? url;
   @override
-  final DateTime? createdAt;
+  final String? img;
   @override
-  final DateTime? updatedAt;
+  final String? createdAt;
   @override
-  final String? rating;
+  final FolderModel? folder;
 
   @override
   String toString() {
-    return 'BookmarkModel(id: $id, userId: $userId, folderId: $folderId, url: $url, imageUrl: $imageUrl, title: $title, isVisited: $isVisited, createdAt: $createdAt, updatedAt: $updatedAt, rating: $rating)';
+    return 'BookmarkModel(bookmarkId: $bookmarkId, title: $title, url: $url, img: $img, createdAt: $createdAt, folder: $folder)';
   }
 
   @override
@@ -270,27 +225,20 @@ class _$BookmarkModelImpl implements _BookmarkModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookmarkModelImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.folderId, folderId) ||
-                other.folderId == folderId) &&
-            (identical(other.url, url) || other.url == url) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
+            (identical(other.bookmarkId, bookmarkId) ||
+                other.bookmarkId == bookmarkId) &&
             (identical(other.title, title) || other.title == title) &&
-            (identical(other.isVisited, isVisited) ||
-                other.isVisited == isVisited) &&
+            (identical(other.url, url) || other.url == url) &&
+            (identical(other.img, img) || other.img == img) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.rating, rating) || other.rating == rating));
+            (identical(other.folder, folder) || other.folder == folder));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId, folderId, url,
-      imageUrl, title, isVisited, createdAt, updatedAt, rating);
+  int get hashCode =>
+      Object.hash(runtimeType, bookmarkId, title, url, img, createdAt, folder);
 
   /// Create a copy of BookmarkModel
   /// with the given fields replaced by the non-null parameter values.
@@ -310,40 +258,28 @@ class _$BookmarkModelImpl implements _BookmarkModel {
 
 abstract class _BookmarkModel implements BookmarkModel {
   const factory _BookmarkModel(
-      {final int? id,
-      final int? userId,
-      final int? folderId,
-      final String? url,
-      final String? imageUrl,
+      {final int? bookmarkId,
       final String? title,
-      final bool? isVisited,
-      final DateTime? createdAt,
-      final DateTime? updatedAt,
-      final String? rating}) = _$BookmarkModelImpl;
+      final String? url,
+      final String? img,
+      final String? createdAt,
+      final FolderModel? folder}) = _$BookmarkModelImpl;
 
   factory _BookmarkModel.fromJson(Map<String, dynamic> json) =
       _$BookmarkModelImpl.fromJson;
 
   @override
-  int? get id;
-  @override
-  int? get userId;
-  @override
-  int? get folderId;
-  @override
-  String? get url;
-  @override
-  String? get imageUrl;
+  int? get bookmarkId;
   @override
   String? get title;
   @override
-  bool? get isVisited;
+  String? get url;
   @override
-  DateTime? get createdAt;
+  String? get img;
   @override
-  DateTime? get updatedAt;
+  String? get createdAt;
   @override
-  String? get rating;
+  FolderModel? get folder;
 
   /// Create a copy of BookmarkModel
   /// with the given fields replaced by the non-null parameter values.

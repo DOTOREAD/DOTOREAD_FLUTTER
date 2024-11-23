@@ -22,7 +22,7 @@ class FolderList extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: ListTile(
                   onTap: () {
-                    Get.toNamed(AppRoutes.BookmarkInFolder, arguments: folder);
+                    Get.toNamed(AppRoutes.BookmarksByFolder, arguments: folder);
                   },
                   onLongPress: () {
                     _showContextMenu(context, folder, index);

@@ -13,12 +13,15 @@ class BookmarkRepositoryImpl extends BookmarkRepository {
   BookmarkRepositoryImpl(this.network);
 
   @override
-  Future<ApiResult> getBookmarks() async {
+  Future<ApiResult> getAllBookmarks() async {
     ApiResult apiResult;
     try {
       apiResult = await network.callApi(
           method: const NetworkModel.get(
-              networkParameter: NetworkParameter(url: baseUrl + bookmarkUrl)));
+              networkParameter: NetworkParameter(
+        url: "$baseUrl$bookmarkUrl/all",
+        header: {'access': accessToken},
+      )));
     } catch (exception) {
       apiResult = const ApiResult.failure(
           networkException: NetworkException.unknownException());
@@ -58,5 +61,17 @@ class BookmarkRepositoryImpl extends BookmarkRepository {
       );
     }
     return apiResult;
+  }
+
+  @override
+  Future<ApiResult> getBookmarksByFolder() {
+    // TODO: implement getBookmarksByFolder
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult> getUncategorizedBookmarks() {
+    // TODO: implement getUncategorizedBookmarks
+    throw UnimplementedError();
   }
 }

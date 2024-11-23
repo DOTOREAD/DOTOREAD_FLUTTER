@@ -22,8 +22,6 @@ FolderModel _$FolderModelFromJson(Map<String, dynamic> json) {
 mixin _$FolderModel {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
 
   /// Serializes this FolderModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,7 +39,7 @@ abstract class $FolderModelCopyWith<$Res> {
           FolderModel value, $Res Function(FolderModel) then) =
       _$FolderModelCopyWithImpl<$Res, FolderModel>;
   @useResult
-  $Res call({int? id, String? name, DateTime? createdAt, DateTime? updatedAt});
+  $Res call({int? id, String? name});
 }
 
 /// @nodoc
@@ -61,8 +59,6 @@ class _$FolderModelCopyWithImpl<$Res, $Val extends FolderModel>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -73,14 +69,6 @@ class _$FolderModelCopyWithImpl<$Res, $Val extends FolderModel>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
     ) as $Val);
   }
 }
@@ -93,7 +81,7 @@ abstract class _$$FolderModelImplCopyWith<$Res>
       __$$FolderModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? name, DateTime? createdAt, DateTime? updatedAt});
+  $Res call({int? id, String? name});
 }
 
 /// @nodoc
@@ -111,8 +99,6 @@ class __$$FolderModelImplCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
   }) {
     return _then(_$FolderModelImpl(
       id: freezed == id
@@ -123,14 +109,6 @@ class __$$FolderModelImplCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
     ));
   }
 }
@@ -138,7 +116,7 @@ class __$$FolderModelImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FolderModelImpl implements _FolderModel {
-  const _$FolderModelImpl({this.id, this.name, this.createdAt, this.updatedAt});
+  const _$FolderModelImpl({this.id, this.name});
 
   factory _$FolderModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$FolderModelImplFromJson(json);
@@ -147,14 +125,10 @@ class _$FolderModelImpl implements _FolderModel {
   final int? id;
   @override
   final String? name;
-  @override
-  final DateTime? createdAt;
-  @override
-  final DateTime? updatedAt;
 
   @override
   String toString() {
-    return 'FolderModel(id: $id, name: $name, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'FolderModel(id: $id, name: $name)';
   }
 
   @override
@@ -163,16 +137,12 @@ class _$FolderModelImpl implements _FolderModel {
         (other.runtimeType == runtimeType &&
             other is _$FolderModelImpl &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+            (identical(other.name, name) || other.name == name));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, createdAt, updatedAt);
+  int get hashCode => Object.hash(runtimeType, id, name);
 
   /// Create a copy of FolderModel
   /// with the given fields replaced by the non-null parameter values.
@@ -191,11 +161,8 @@ class _$FolderModelImpl implements _FolderModel {
 }
 
 abstract class _FolderModel implements FolderModel {
-  const factory _FolderModel(
-      {final int? id,
-      final String? name,
-      final DateTime? createdAt,
-      final DateTime? updatedAt}) = _$FolderModelImpl;
+  const factory _FolderModel({final int? id, final String? name}) =
+      _$FolderModelImpl;
 
   factory _FolderModel.fromJson(Map<String, dynamic> json) =
       _$FolderModelImpl.fromJson;
@@ -204,10 +171,6 @@ abstract class _FolderModel implements FolderModel {
   int? get id;
   @override
   String? get name;
-  @override
-  DateTime? get createdAt;
-  @override
-  DateTime? get updatedAt;
 
   /// Create a copy of FolderModel
   /// with the given fields replaced by the non-null parameter values.

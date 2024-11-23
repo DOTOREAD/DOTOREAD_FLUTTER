@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:convert';
 
 import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
 import 'package:dotoread_app/data/models/res_model.dart';
@@ -23,9 +22,11 @@ class FolderController extends GetxController {
         final ResModel<List<FolderModel>> resModel = folderModelFromJson(data);
         folderList.value = resModel.result ?? <FolderModel>[];
       },
-      error: (data, url, headers, statusCode) {},
+      error: (data, url, headers, statusCode) {
+        log(data);
+      },
       failure: (NetworkException) {
-        log('Network Exception: $NetworkException');
+        log('$NetworkException');
       },
     );
     loader.value = false;
@@ -57,8 +58,7 @@ class FolderController extends GetxController {
         folderList[index].id!, updatedFields);
     result.when(
       success: (data, url, headers, statusCode) {
-        folderList[index] = folderList[index]
-            .copyWith(name: newFolderName, updatedAt: DateTime.now());
+        folderList[index] = folderList[index].copyWith(name: newFolderName);
         print("Folder updated successfully: $statusCode, Data: $data");
       },
       error: (data, url, headers, statusCode) {

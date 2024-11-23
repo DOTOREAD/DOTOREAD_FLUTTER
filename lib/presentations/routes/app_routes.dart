@@ -4,6 +4,6 @@ class AppRoutes {
   static const Login = "/login";
   static const Root = "/root";
   static const Folder = "/folder/:id";
-  static const BookmarkInFolder = "/bookmark";
+  static const BookmarksByFolder = "/bookmark";
   static const WebView = "/webView";
 }

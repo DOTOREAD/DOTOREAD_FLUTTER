@@ -6,8 +6,8 @@ import 'package:dotoread_app/presentations/screens/webview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class FolderContentList extends StatelessWidget {
-  FolderContentList({
+class AllBookmarksList extends StatelessWidget {
+  AllBookmarksList({
     super.key,
   });
 
@@ -18,29 +18,29 @@ class FolderContentList extends StatelessWidget {
     return Obx(() => _controller.loader.value
         ? const Center(child: CircularProgressIndicator())
         : ListView.builder(
-            itemCount: _controller.bookmarksList.length,
+            itemCount: _controller.allBookmarksList.length,
             itemBuilder: (context, index) {
-              final bookmark = _controller.bookmarksList[index];
+              final bookmark = _controller.allBookmarksList[index];
               return ListTile(
-                leading: bookmark.isVisited!
-                    ? Container(
-                        width: 3,
-                        height: double.infinity,
-                        decoration: const BoxDecoration(
-                          color: AppTheme.gray1,
-                        ),
-                      )
-                    : Container(
-                        width: 3,
-                        height: double.infinity,
-                        decoration: const BoxDecoration(
-                          color: AppTheme.orange1,
-                        ),
-                      ),
+                // leading: bookmark.isVisited!
+                //     ? Container(
+                //         width: 3,
+                //         height: double.infinity,
+                //         decoration: const BoxDecoration(
+                //           color: AppTheme.gray1,
+                //         ),
+                //       )
+                //     : Container(
+                //         width: 3,
+                //         height: double.infinity,
+                //         decoration: const BoxDecoration(
+                //           color: AppTheme.orange1,
+                //         ),
+                //       ),
                 title: Text(bookmark.title!),
                 subtitle: Text(bookmark.url!),
                 onTap: () {
-                  _controller.updateVisit(index);
+                  // _controller.updateVisit(index);
                   Get.to(() => WebviewScreen(
                       title: bookmark.title!, url: bookmark.url!));
                 },

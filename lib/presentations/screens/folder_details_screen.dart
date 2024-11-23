@@ -27,7 +27,7 @@ class FolderDetailsScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: FolderContentList(),
+      body: AllBookmarksList(),
     ));
   }
 }

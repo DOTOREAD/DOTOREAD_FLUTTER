@@ -9,19 +9,19 @@ class ArticleCarousel extends StatelessWidget {
   final List<BookmarkModel> bookmarkList = [
     const BookmarkModel(
       url: "https://toki0411.tistory.com/20",
-      imageUrl:
+      img:
           'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FuVtv8%2FbtrLLyXCi8g%2FJRfi8t1vB4yhsYMGHHmCe0%2Fimg.png',
       title: "[에러 해결] Android Studio",
     ),
     const BookmarkModel(
       url: "https://velog.io/@roo333",
-      imageUrl:
+      img:
           'https://velog.velcdn.com/images/roo333/post/e06e5c7c-ee64-4186-820c-256f7dfa08d0/image.jpg',
       title: "메모리 관리 in Python",
     ),
     const BookmarkModel(
       url: "https://m.post.naver.com/",
-      imageUrl:
+      img:
           'https://postfiles.pstatic.net/MjAyMjExMTBfMTEw/MDAxNjY4MDUwMTY4MjA1.BaWUeEb6QVCrUYidTgbTJgjIQ1eVA_XwMxy7AC9n4rYg.uD6Q4LyZ7MTMRr38nWou-LF00cIVpq4ewHu_4OT1pv8g.JPEG.arthetique/%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%8D%B8%EB%84%A4%EC%9D%BC2.jpg?type=w966',
       title: "피부타입과 피부 자가 진단법",
     ),
@@ -53,7 +53,7 @@ class ArticleCarousel extends StatelessWidget {
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(30),
                       child: Image.network(
-                        bookmark.imageUrl!,
+                        bookmark.img!,
                         fit: BoxFit.cover,
                       ),
                     ),

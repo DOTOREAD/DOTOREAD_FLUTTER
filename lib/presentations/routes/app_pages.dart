@@ -33,7 +33,7 @@ class AppPages {
       ],
     ),
     GetPage(
-        name: AppRoutes.BookmarkInFolder,
+        name: AppRoutes.BookmarksByFolder,
         page: () => const FolderDetailsScreen(),
         bindings: [
           FolderBinding(),

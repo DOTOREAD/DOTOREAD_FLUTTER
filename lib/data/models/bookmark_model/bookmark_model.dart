@@ -1,29 +1,36 @@
 import 'dart:convert';
 
+import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
+import 'package:dotoread_app/data/models/res_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'bookmark_model.freezed.dart';
 part 'bookmark_model.g.dart';
 
-List<BookmarkModel> bookmarkModelFromJson(String str) =>
-    List<BookmarkModel>.from(
-        json.decode(str).map((x) => BookmarkModel.fromJson(x)));
-String bookmarkModelToJson(List<BookmarkModel> data) =>
-    json.encode(List<dynamic>.from(data.map((e) => e.toJson())));
+// List<BookmarkModel> bookmarkModelFromJson(String str) =>
+//     List<BookmarkModel>.from(
+//         json.decode(str).map((x) => BookmarkModel.fromJson(x)));
+// String bookmarkModelToJson(List<BookmarkModel> data) =>
+//     json.encode(List<dynamic>.from(data.map((e) => e.toJson())));
+List<BookmarkModel> bookmarkModelListFromJson(List<dynamic> json) =>
+    json.map((x) => BookmarkModel.fromJson(x as Map<String, dynamic>)).toList();
+ResModel<List<BookmarkModel>> bookmarkModelFromJson(String str) {
+  final Map<String, dynamic> parsedData = json.decode(str);
+  return ResModel<List<BookmarkModel>>.fromJson(
+    parsedData,
+    (json) => bookmarkModelListFromJson(json as List<dynamic>),
+  );
+}
 
 @freezed
 class BookmarkModel with _$BookmarkModel {
   const factory BookmarkModel({
-    int? id,
-    int? userId,
-    int? folderId,
-    String? url,
-    String? imageUrl,
+    int? bookmarkId,
     String? title,
-    bool? isVisited,
-    DateTime? createdAt,
-    DateTime? updatedAt,
-    String? rating,
+    String? url,
+    String? img,
+    String? createdAt,
+    FolderModel? folder,
   }) = _BookmarkModel;
   factory BookmarkModel.fromJson(Map<String, dynamic> json) =>
       _$BookmarkModelFromJson(json);
