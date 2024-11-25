@@ -13,14 +13,10 @@ class BookmarksController extends GetxController {
   BookmarksController(this.bookmarkRepository);
 
   RxBool loader = false.obs;
-  RxList<BookmarkModel> bookmarksListbyFolderId = <BookmarkModel>[].obs;
+  RxList<BookmarkModel> folderBookmarksList = <BookmarkModel>[].obs;
   RxList<BookmarkModel> allBookmarksList = <BookmarkModel>[].obs;
   RxList<BookmarkModel> uncategorizedBookmarksList = <BookmarkModel>[].obs;
   final RxString currentSortType = 'DESC'.obs;
-
-  void getBookmarksByFolderId(int folderId) {
-    // todo
-  }
 
   // Future<void> updateVisit(int index) async {
   //   Map<String, dynamic> updatedFields = {
@@ -106,5 +102,27 @@ class BookmarksController extends GetxController {
   void onInit() {
     getAllBookmarksCall();
     super.onInit();
+  }
+
+  Future<void> getBookmarksByFolderCall(int folderId,
+      {String? sortType}) async {
+    loader.value = true;
+    if (sortType != null) {
+      currentSortType.value = sortType;
+    }
+    ApiResult result = await bookmarkRepository.getBookmarksByFolder(folderId,
+        sortType: currentSortType.value);
+    result.when(
+      success: (data, url, headers, statusCode) {
+        final ResModel<List<BookmarkModel>> resModel =
+            bookmarkModelFromJson(data);
+        folderBookmarksList.value = resModel.result ?? <BookmarkModel>[];
+      },
+      error: (data, url, headers, statusCode) {
+        log("error: $statusCode");
+      },
+      failure: (networkException) {},
+    );
+    loader.value = false;
   }
 }

@@ -1,7 +1,9 @@
 import 'package:dotoread_app/controllers/folder_controller.dart';
 import 'package:dotoread_app/core/constants/theme.dart';
 import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
+import 'package:dotoread_app/domain/bindings/bookmark_binding.dart';
 import 'package:dotoread_app/presentations/routes/app_routes.dart';
+import 'package:dotoread_app/presentations/screens/folder_bookmarks_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -22,7 +24,10 @@ class FolderList extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: ListTile(
                   onTap: () {
-                    Get.toNamed(AppRoutes.BookmarksByFolder, arguments: folder);
+                    Get.toNamed(
+                      AppRoutes.FolderBookmarks,
+                      arguments: folder,
+                    );
                   },
                   onLongPress: () {
                     _showContextMenu(context, folder, index);

@@ -4,7 +4,7 @@ import 'package:dotoread_app/data/providers/network/model/api_results.dart';
 abstract class BookmarkRepository {
   Future<ApiResult> getAllBookmarks({String? sortType});
   Future<ApiResult> getUncategorizedBookmarks({String? sortType});
-  Future<ApiResult> getBookmarksByFolder();
+  Future<ApiResult> getBookmarksByFolder(int folderId, {String? sortType});
   Future<ApiResult> createBookmarks(BookmarkModel bookmarkModel);
   Future<ApiResult> deleteBookmarks(BookmarkModel bookmarkModel);
   Future<ApiResult> updateBookmarks(int id, Map<String, dynamic> updatedFields);

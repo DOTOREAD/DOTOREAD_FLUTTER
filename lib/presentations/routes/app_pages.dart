@@ -1,3 +1,4 @@
+import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
 import 'package:dotoread_app/domain/bindings/bookmark_binding.dart';
 import 'package:dotoread_app/domain/bindings/folder_binding.dart';
 import 'package:dotoread_app/domain/bindings/login_binding.dart';
@@ -6,7 +7,7 @@ import 'package:dotoread_app/domain/bindings/root_binding.dart';
 import 'package:dotoread_app/domain/bindings/splash_binding.dart';
 import 'package:dotoread_app/presentations/root.dart';
 import 'package:dotoread_app/presentations/routes/app_routes.dart';
-import 'package:dotoread_app/presentations/screens/folder_details_screen.dart';
+import 'package:dotoread_app/presentations/screens/folder_bookmarks_screen.dart';
 import 'package:dotoread_app/presentations/screens/login_screen.dart';
 import 'package:dotoread_app/presentations/screens/signup_screen.dart';
 import 'package:dotoread_app/presentations/screens/splash_screen.dart';
@@ -48,12 +49,13 @@ class AppPages {
         BookmarkBinding(),
       ],
     ),
-    // GetPage(
-    //     name: AppRoutes.BookmarksByFolder,
-    //     page: () => const FolderDetailsScreen(),
-    //     bindings: [
-    //       FolderBinding(),
-    //       BookmarkBinding(),
-    //     ])
+    GetPage(
+      name: AppRoutes.FolderBookmarks,
+      page: () {
+        final folder = Get.arguments as FolderModel;
+        return FolderBookmarksScreen(folder: folder);
+      },
+      binding: BookmarkBinding(),
+    ),
   ];
 }

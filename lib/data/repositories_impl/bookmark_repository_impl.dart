@@ -82,8 +82,20 @@ class BookmarkRepositoryImpl extends BookmarkRepository {
   }
 
   @override
-  Future<ApiResult> getBookmarksByFolder() {
-    // TODO: implement getBookmarksByFolder
-    throw UnimplementedError();
+  Future<ApiResult> getBookmarksByFolder(int folderId,
+      {String? sortType = 'DESC'}) async {
+    ApiResult apiResult;
+    try {
+      apiResult = await network.callApi(
+          method: NetworkModel.get(
+              networkParameter: NetworkParameter(
+        url: "$baseUrl$bookmarkUrl/all/$folderId?sortType=$sortType",
+        header: {'access': accessToken},
+      )));
+    } catch (exception) {
+      apiResult = const ApiResult.failure(
+          networkException: NetworkException.unknownException());
+    }
+    return apiResult;
   }
 }
