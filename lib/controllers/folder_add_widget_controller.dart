@@ -7,22 +7,19 @@ import 'package:get/get.dart';
 class FolderAddWidgetController extends GetxController {
   final FolderRepository folderRepository;
   FolderAddWidgetController(this.folderRepository);
-  RxBool isAdding = false.obs; // Row에서 TextField로 전환 여부
-  RxString folderName = ''.obs; // TextField의 내용 저장
-  RxBool isTextFieldNotEmpty = false.obs; // TextField가 비어있는지 여부
+  RxBool isAdding = false.obs;
+  RxString folderName = ''.obs;
+  RxBool isTextFieldNotEmpty = false.obs;
 
-  // 폴더 이름 입력 시 TextField 값이 변하면 호출됨
   void onFolderNameChanged(String value) {
     folderName.value = value;
     isTextFieldNotEmpty.value = value.isNotEmpty;
   }
 
-  // 폴더 추가 로직 (추후 실제 API 또는 로컬 저장소와 연동 가능)
-  Future<void> addFolder() async {
+  Future<void> createFolderCall() async {
     if (isTextFieldNotEmpty.value) {
-      // 여기에 실제 폴더 추가 로직을 작성 (API 호출 등)
       FolderModel newFolder = FolderModel(
-        name: folderName.value, // 텍스트 필드에서 입력받은 이름 사용
+        name: folderName.value,
       );
 
       ApiResult result = await folderRepository.createFolder(newFolder);
@@ -35,12 +32,11 @@ class FolderAddWidgetController extends GetxController {
         failure: (NetworkException) {},
       );
       folderName.value = '';
-      isAdding.value = false; // 완료 후 다시 Row로 전환
-      isTextFieldNotEmpty.value = false; // 추가 후 버튼 비활성화
+      isAdding.value = false;
+      isTextFieldNotEmpty.value = false;
     }
   }
 
-  // Row와 TextField 사이의 전환
   void toggleAddMode() {
     isAdding.value = !isAdding.value;
   }

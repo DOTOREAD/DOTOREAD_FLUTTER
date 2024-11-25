@@ -42,7 +42,7 @@ class FolderAddWidget extends StatelessWidget {
                               color: AppTheme.gray3,
                             ),
                       onPressed: _controller.isTextFieldNotEmpty.value
-                          ? _controller.addFolder
+                          ? _controller.createFolderCall
                           : _controller.toggleAddMode,
                     ),
                   ],

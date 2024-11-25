@@ -7,6 +7,7 @@ import 'package:dotoread_app/data/providers/network/model/api_results.dart';
 import 'package:dotoread_app/data/providers/network/model/network_exception.dart';
 import 'package:dotoread_app/data/providers/network/model/network_model.dart';
 import 'package:dotoread_app/data/providers/network/model/network_parameters.dart';
+import 'dart:developer';
 
 class BookmarkRepositoryImpl extends BookmarkRepository {
   final Network network;
@@ -48,9 +49,28 @@ class BookmarkRepositoryImpl extends BookmarkRepository {
   }
 
   @override
-  Future<ApiResult> createBookmarks(BookmarkModel bookmarkModel) {
-    // TODO: implement createBookmarks
-    throw UnimplementedError();
+  Future<ApiResult> createBookmarks(BookmarkModel bookmarkModel) async {
+    ApiResult apiResult;
+
+    try {
+      final body = bookmarkModel.toJson();
+      apiResult = await network.callApi(
+        method: NetworkModel.post(
+          networkParameter: NetworkParameter(
+              url: '$baseUrl$bookmarkUrl',
+              requestBody: body,
+              header: {
+                'Content-Type': 'application/json',
+                'access': accessToken,
+              }),
+        ),
+      );
+    } catch (exception) {
+      apiResult = const ApiResult.failure(
+        networkException: NetworkException.unknownException(),
+      );
+    }
+    return apiResult;
   }
 
   @override

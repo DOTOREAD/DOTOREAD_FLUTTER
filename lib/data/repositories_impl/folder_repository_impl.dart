@@ -17,9 +17,7 @@ class FolderRepositoryImpl extends FolderRepository {
     ApiResult apiResult;
 
     try {
-      // 폴더 생성 POST 요청
       final body = folderModel.toJson();
-
       apiResult = await network.callApi(
         method: NetworkModel.post(
           networkParameter: NetworkParameter(

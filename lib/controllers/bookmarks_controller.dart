@@ -38,16 +38,24 @@ class BookmarksController extends GetxController {
   //   );
   // }
 
-  Future<void> postBookmarks(int id, String url) async {
-    if (url != '') {
+  Future<void> createBookmarksCall(String url) async {
+    if (url.isNotEmpty) {
       BookmarkModel newBookmark = BookmarkModel(url: url);
+
       ApiResult result = await bookmarkRepository.createBookmarks(newBookmark);
       result.when(
-          success: (data, url, headers, statusCode) async {
-            log(data);
-          },
-          error: (data, url, headers, statusCode) {},
-          failure: (NetworkException) {});
+        success: (data, url, headers, statusCode) async {
+          await getAllBookmarksCall();
+          await getUncategorizedBookmarksCall();
+          log(data);
+        },
+        error: (data, url, headers, statusCode) {
+          log("$statusCode");
+        },
+        failure: (networkException) {
+          log("$networkException");
+        },
+      );
     }
   }
 
@@ -62,7 +70,15 @@ class BookmarksController extends GetxController {
       success: (data, url, headers, statusCode) {
         final ResModel<List<BookmarkModel>> resModel =
             bookmarkModelFromJson(data);
-        allBookmarksList.value = resModel.result ?? <BookmarkModel>[];
+        allBookmarksList.value = resModel.result
+                ?.map((bookmark) =>
+                    bookmark.copyWith(title: bookmark.title ?? '제목 없음'))
+                .toList() ??
+            <BookmarkModel>[];
+        log('✅ getAllBookmarks Response:');
+        log('Status Code: $statusCode');
+        log('Headers: $headers');
+        log('Data: $data');
       },
       error: (data, url, headers, statusCode) {
         log("error: $statusCode");
@@ -98,12 +114,6 @@ class BookmarksController extends GetxController {
     getAllBookmarksCall(sortType: newSortType);
   }
 
-  @override
-  void onInit() {
-    getAllBookmarksCall();
-    super.onInit();
-  }
-
   Future<void> getBookmarksByFolderCall(int folderId,
       {String? sortType}) async {
     loader.value = true;
@@ -124,5 +134,11 @@ class BookmarksController extends GetxController {
       failure: (networkException) {},
     );
     loader.value = false;
+  }
+
+  @override
+  void onInit() {
+    getAllBookmarksCall();
+    super.onInit();
   }
 }

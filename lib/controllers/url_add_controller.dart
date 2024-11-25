@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:dotoread_app/controllers/bookmarks_controller.dart';
 import 'package:dotoread_app/controllers/folder_controller.dart';
 import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
 import 'package:get/get.dart';
@@ -8,6 +11,8 @@ class UrlAddController extends GetxController {
   RxInt selectedFolder = 0.obs;
   RxString selectedFolderName = ''.obs;
   final FolderController folderController = Get.find<FolderController>();
+  final BookmarksController bookmarksController =
+      Get.find<BookmarksController>();
 
   void updateUrl(String url) {
     urlController.value = url;
@@ -26,9 +31,8 @@ class UrlAddController extends GetxController {
 
   void saveUrl() {
     if (urlController.isNotEmpty) {
-      print(
-          'Saving URL: ${urlController.value} to folder: ${selectedFolder.value == 0 ? '미분류' : selectedFolder.value}');
-
+      log('Saving URL: ${urlController.value} to folder: ${selectedFolder.value == 0 ? '미분류' : selectedFolder.value}');
+      bookmarksController.createBookmarksCall(urlController.value);
       urlController.value = '';
       selectedFolder.value = 0;
       selectedFolderName.value = '';
