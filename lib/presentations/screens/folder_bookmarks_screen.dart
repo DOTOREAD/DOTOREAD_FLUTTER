@@ -25,8 +25,10 @@ class FolderBookmarksScreen extends GetView<BookmarksController> {
           ),
           actions: [
             IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.abc_outlined),
+              onPressed: () => controller.toggleSortType(),
+              icon: Obx(() => Icon(controller.currentSortType.value == 'DESC'
+                  ? Icons.arrow_downward
+                  : Icons.arrow_upward)),
             ),
           ],
         ),
