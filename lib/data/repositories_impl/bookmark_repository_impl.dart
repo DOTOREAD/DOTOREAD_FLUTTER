@@ -30,6 +30,24 @@ class BookmarkRepositoryImpl extends BookmarkRepository {
   }
 
   @override
+  Future<ApiResult> getUncategorizedBookmarks(
+      {String? sortType = 'DESC'}) async {
+    ApiResult apiResult;
+    try {
+      apiResult = await network.callApi(
+          method: NetworkModel.get(
+              networkParameter: NetworkParameter(
+        url: "$baseUrl$bookmarkUrl/uncategorized?sortType=$sortType",
+        header: {'access': accessToken},
+      )));
+    } catch (exception) {
+      apiResult = const ApiResult.failure(
+          networkException: NetworkException.unknownException());
+    }
+    return apiResult;
+  }
+
+  @override
   Future<ApiResult> createBookmarks(BookmarkModel bookmarkModel) {
     // TODO: implement createBookmarks
     throw UnimplementedError();
@@ -66,12 +84,6 @@ class BookmarkRepositoryImpl extends BookmarkRepository {
   @override
   Future<ApiResult> getBookmarksByFolder() {
     // TODO: implement getBookmarksByFolder
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<ApiResult> getUncategorizedBookmarks() {
-    // TODO: implement getUncategorizedBookmarks
     throw UnimplementedError();
   }
 }

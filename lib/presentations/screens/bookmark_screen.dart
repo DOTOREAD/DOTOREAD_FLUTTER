@@ -56,7 +56,9 @@ class BookmarkScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               ListTile(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.UncategorizedBookmarks);
+                },
                 title: Row(
                   children: [
                     SvgPicture.asset(

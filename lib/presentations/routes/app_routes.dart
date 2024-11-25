@@ -7,4 +7,5 @@ class AppRoutes {
   static const BookmarksByFolder = "/bookmarks";
   static const WebView = "/webView";
   static const AllBookmarks = "/allbookmarks";
+  static const UncategorizedBookmarks = "/uncategorizedbookmarks";
 }
