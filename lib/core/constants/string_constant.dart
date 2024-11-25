@@ -6,4 +6,4 @@ const String folderUrl = "/api/v1/folders";
 const String userUrl = "/user";
 const String loginUrl = "/login";
 const String accessToken =
-    "eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiZ29vZ2xlIDEwNjc1ODQzMjcyOTI2Mjg5Mzc1NyIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MzI1MTM4NTcsImV4cCI6MTczMjYwMDI1N30.jbSCaxsBBIegJT8L4k3isxx4Ne_dR2dXrhW7GRxqQRQ";
+    "eyJhbGciOiJIUzI1NiJ9.eyJjYXRlZ29yeSI6ImFjY2VzcyIsInVzZXJuYW1lIjoiZ29vZ2xlIDEwNjc1ODQzMjcyOTI2Mjg5Mzc1NyIsInJvbGUiOiJST0xFX1VTRVIiLCJpYXQiOjE3MzI1MjM2MTIsImV4cCI6MTczMjYxMDAxMn0._MzTdO4X-m5UJAupDUdLKOrGPlwgax4QDwJG8OExheY";

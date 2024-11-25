@@ -45,6 +45,7 @@ class BookmarksController extends GetxController {
       ApiResult result = await bookmarkRepository.createBookmarks(newBookmark);
       result.when(
         success: (data, url, headers, statusCode) async {
+          log(data);
           await getAllBookmarksCall();
           await getUncategorizedBookmarksCall();
           log(data);

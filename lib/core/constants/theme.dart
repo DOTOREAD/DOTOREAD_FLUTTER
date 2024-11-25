@@ -52,20 +52,22 @@ class AppTheme {
   );
   static const TextStyle modalTitleStyle = TextStyle(
     fontFamily: "Pretendard",
-    fontSize: 18,
-    fontWeight: FontWeight.w500,
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    color: white1,
   );
 
   static const InputDecoration urlInputDecoration = InputDecoration(
-    focusedBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: AppTheme.orange1, width: 2.0),
+    focusedBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppTheme.gray1, width: 2.0),
+      borderRadius: BorderRadius.all(Radius.circular(15)),
     ),
-    enabledBorder: UnderlineInputBorder(
-      borderSide: BorderSide(color: AppTheme.orange1, width: 1.5),
+    enabledBorder: OutlineInputBorder(
+      borderSide: BorderSide(color: AppTheme.gray1, width: 1.5),
+      borderRadius: BorderRadius.all(Radius.circular(15)),
     ),
-    contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 10),
-    hintText: 'Enter URL',
-    prefixIcon: Icon(Icons.link, color: AppTheme.gray3),
+    contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 15),
+    hintText: 'https://',
   );
 
   static const InputDecoration searchInputDecoration = InputDecoration(

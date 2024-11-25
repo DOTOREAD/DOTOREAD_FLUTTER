@@ -38,6 +38,8 @@ class UrlAddButton extends StatelessWidget {
 
     showDialog(
       context: context,
+      barrierDismissible: true,
+      barrierColor: AppTheme.backgroundBox.withOpacity(0.5),
       builder: (BuildContext context) {
         return Stack(
           children: [
@@ -47,30 +49,16 @@ class UrlAddButton extends StatelessWidget {
               right: 16,
               child: Material(
                 borderRadius: const BorderRadius.all(Radius.circular(10)),
-                color: AppTheme.backgroundBox,
+                color: AppTheme.background,
                 child: Container(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Row(
-                        children: [
-                          Container(
-                            height: 50,
-                            width: 50,
-                            decoration: BoxDecoration(
-                              color: AppTheme.orange3,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: const Icon(
-                              Icons.note_add_outlined,
-                              color: AppTheme.orange1,
-                            ),
-                          ),
-                          const SizedBox(width: 10),
-                          const Text('Enter URL',
-                              style: AppTheme.modalTitleStyle),
-                        ],
+                      const SizedBox(height: 10),
+                      const Text(
+                        'URL로 북마크 추가하기',
+                        style: AppTheme.modalTitleStyle,
                       ),
                       const SizedBox(height: 20),
                       TextField(
