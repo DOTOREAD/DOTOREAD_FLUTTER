@@ -6,8 +6,8 @@ import 'package:dotoread_app/presentations/screens/webview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class AllBookmarksList extends StatelessWidget {
-  AllBookmarksList({
+class FolderContentList extends StatelessWidget {
+  FolderContentList({
     super.key,
   });
 

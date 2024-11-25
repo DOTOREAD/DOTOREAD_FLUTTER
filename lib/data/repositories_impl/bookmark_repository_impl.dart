@@ -13,13 +13,13 @@ class BookmarkRepositoryImpl extends BookmarkRepository {
   BookmarkRepositoryImpl(this.network);
 
   @override
-  Future<ApiResult> getAllBookmarks() async {
+  Future<ApiResult> getAllBookmarks({String? sortType = 'DESC'}) async {
     ApiResult apiResult;
     try {
       apiResult = await network.callApi(
-          method: const NetworkModel.get(
+          method: NetworkModel.get(
               networkParameter: NetworkParameter(
-        url: "$baseUrl$bookmarkUrl/all",
+        url: "$baseUrl$bookmarkUrl/all?sortType=$sortType",
         header: {'access': accessToken},
       )));
     } catch (exception) {

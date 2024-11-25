@@ -10,6 +10,7 @@ import 'package:dotoread_app/presentations/screens/folder_details_screen.dart';
 import 'package:dotoread_app/presentations/screens/login_screen.dart';
 import 'package:dotoread_app/presentations/screens/signup_screen.dart';
 import 'package:dotoread_app/presentations/screens/splash_screen.dart';
+import 'package:dotoread_app/presentations/screens/all_bookmarks_screeen.dart';
 import 'package:get/get.dart';
 
 class AppPages {
@@ -33,11 +34,18 @@ class AppPages {
       ],
     ),
     GetPage(
-        name: AppRoutes.BookmarksByFolder,
-        page: () => const FolderDetailsScreen(),
-        bindings: [
-          FolderBinding(),
-          BookmarkBinding(),
-        ])
+      name: AppRoutes.AllBookmarks,
+      page: () => AllBookmarksScreen(),
+      bindings: [
+        BookmarkBinding(),
+      ],
+    ),
+    // GetPage(
+    //     name: AppRoutes.BookmarksByFolder,
+    //     page: () => const FolderDetailsScreen(),
+    //     bindings: [
+    //       FolderBinding(),
+    //       BookmarkBinding(),
+    //     ])
   ];
 }

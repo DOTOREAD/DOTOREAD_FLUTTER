@@ -15,6 +15,7 @@ class BookmarksController extends GetxController {
   RxBool loader = false.obs;
   RxList<BookmarkModel> bookmarksListbyFolderId = <BookmarkModel>[].obs;
   RxList<BookmarkModel> allBookmarksList = <BookmarkModel>[].obs;
+  final RxString currentSortType = 'DESC'.obs;
 
   void getBookmarksByFolderId(int folderId) {
     // todo
@@ -53,9 +54,13 @@ class BookmarksController extends GetxController {
     }
   }
 
-  Future<void> getAllBookmarksCall() async {
+  Future<void> getAllBookmarksCall({String? sortType}) async {
     loader.value = true;
-    ApiResult result = await bookmarkRepository.getAllBookmarks();
+    if (sortType != null) {
+      currentSortType.value = sortType;
+    }
+    ApiResult result = await bookmarkRepository.getAllBookmarks(
+        sortType: currentSortType.value);
     result.when(
       success: (data, url, headers, statusCode) {
         final ResModel<List<BookmarkModel>> resModel =
@@ -68,6 +73,11 @@ class BookmarksController extends GetxController {
       failure: (NetworkException) {},
     );
     loader.value = false;
+  }
+
+  void toggleSortType() {
+    final newSortType = currentSortType.value == 'DESC' ? 'ASC' : 'DESC';
+    getAllBookmarksCall(sortType: newSortType);
   }
 
   @override

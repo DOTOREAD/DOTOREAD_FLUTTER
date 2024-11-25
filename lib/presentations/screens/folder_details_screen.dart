@@ -1,5 +1,6 @@
 import 'package:dotoread_app/controllers/bookmarks_controller.dart';
 import 'package:dotoread_app/data/models/folder_model/folder_model.dart';
+import 'package:dotoread_app/presentations/screens/all_bookmarks_screeen.dart';
 import 'package:dotoread_app/presentations/widgets/folder_content_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,7 @@ class FolderDetailsScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: AllBookmarksList(),
+      body: FolderContentList(),
     ));
   }
 }

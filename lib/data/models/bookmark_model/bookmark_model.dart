@@ -7,11 +7,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'bookmark_model.freezed.dart';
 part 'bookmark_model.g.dart';
 
-// List<BookmarkModel> bookmarkModelFromJson(String str) =>
-//     List<BookmarkModel>.from(
-//         json.decode(str).map((x) => BookmarkModel.fromJson(x)));
-// String bookmarkModelToJson(List<BookmarkModel> data) =>
-//     json.encode(List<dynamic>.from(data.map((e) => e.toJson())));
 List<BookmarkModel> bookmarkModelListFromJson(List<dynamic> json) =>
     json.map((x) => BookmarkModel.fromJson(x as Map<String, dynamic>)).toList();
 ResModel<List<BookmarkModel>> bookmarkModelFromJson(String str) {

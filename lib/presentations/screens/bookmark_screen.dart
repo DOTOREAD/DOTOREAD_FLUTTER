@@ -1,9 +1,11 @@
 import 'package:dotoread_app/core/constants/theme.dart';
+import 'package:dotoread_app/presentations/routes/app_routes.dart';
 import 'package:dotoread_app/presentations/widgets/folder_add_widget.dart';
 import 'package:dotoread_app/presentations/widgets/folder_list.dart';
 import 'package:dotoread_app/presentations/widgets/url_add_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 
 class BookmarkScreen extends StatelessWidget {
   const BookmarkScreen({super.key});
@@ -30,7 +32,9 @@ class BookmarkScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               ListTile(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed(AppRoutes.AllBookmarks);
+                },
                 title: Row(
                   children: [
                     SvgPicture.asset(
